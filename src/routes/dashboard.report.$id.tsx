@@ -191,7 +191,7 @@ function Report() {
                     </div>
                   </div>
                 </div>
-                <div className="p-6 grid grid-cols-4 gap-4 justify-items-center">
+                <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
                   <DimensionRing label="Energy & Interaction" pole={poles.E >= poles.I ? "E" : "I"} value={Math.max(poles.E, poles.I)} />
                   <DimensionRing label="Information & Learning" pole={poles.S >= poles.N ? "S" : "N"} value={Math.max(poles.S, poles.N)} />
                   <DimensionRing label="Decision Making" pole={poles.T >= poles.F ? "T" : "F"} value={Math.max(poles.T, poles.F)} />
@@ -264,7 +264,7 @@ function Report() {
                   <div className="mt-4 space-y-3">
                     {growthBars.map((g) => <MeterRow key={g.label} label={g.label} value={g.value} tone="rose" note={`${bandLabel(g.value)} today`} />)}
                   </div>
-                  <div className="mt-6 grid grid-cols-5 items-center gap-1 text-center">
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-center">
                     <div className="rounded-lg bg-secondary p-2 text-[10px] font-semibold text-primary">CURRENT</div>
                     <div className="text-accent font-bold">→</div>
                     <div className="rounded-lg bg-accent/20 p-2 text-[10px] font-semibold text-primary">DEVELOP</div>

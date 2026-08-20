@@ -76,7 +76,7 @@ function Home() {
               {t("hero.subtitle")}
             </p>
 
-            <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2 max-w-xl">
+            <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 max-w-xl">
               {[
                 { icon: ShieldCheck, t: t("hero.feature_science") },
                 { icon: Sparkles, t: t("hero.feature_ai") },
@@ -103,7 +103,7 @@ function Home() {
               </Link>
             </div>
 
-            <div className="mt-6 grid grid-cols-3 max-w-md gap-6">
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 max-w-md gap-6">
               {[
                 { v: 12, s: "+", l: t("hero.stat_assessments") },
                 { v: 850, s: "+", l: t("hero.stat_reports") },

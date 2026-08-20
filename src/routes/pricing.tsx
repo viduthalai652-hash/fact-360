@@ -181,34 +181,38 @@ function Pricing() {
       <section className="container-page pt-14 pb-4">
         {/* Comparison strip */}
         <div className="rounded-2xl border border-border overflow-hidden" data-aos="fade-up">
-          <div className="grid grid-cols-4 bg-secondary/60 text-xs font-bold uppercase tracking-wider text-primary">
-            <div className="p-4">What's included</div>
-            <div className="p-4 text-center">Starter</div>
-            <div className="p-4 text-center bg-accent/10">Growth</div>
-            <div className="p-4 text-center">Consultant</div>
-          </div>
-          {([
-            ["Assessments", "1", "2 (bundle)", "Unlimited"],
-            ["AI executive summary", true, true, true],
-            ["Landscape one-pager PDF", true, true, true],
-            ["Full multi-page report", false, true, true],
-            ["White-label & branding", false, false, true],
-            ["Client workspace / seats", false, false, true],
-            ["Priority support", false, true, "Dedicated CSM"],
-          ] as (string | boolean)[][]).map((row) => {
-            const cell = (v: string | boolean) =>
-              v === true ? <Check className="h-4 w-4 text-success inline" /> :
-              v === false ? <span className="text-muted-foreground/50">—</span> :
-              v;
-            return (
-              <div key={String(row[0])} className="grid grid-cols-4 text-sm border-t border-border">
-                <div className="p-4 font-semibold text-primary">{row[0]}</div>
-                <div className="p-4 text-center text-muted-foreground">{cell(row[1])}</div>
-                <div className="p-4 text-center bg-accent/5 text-primary font-semibold">{cell(row[2])}</div>
-                <div className="p-4 text-center text-muted-foreground">{cell(row[3])}</div>
+          <div className="overflow-x-auto">
+            <div className="min-w-[600px]">
+              <div className="grid grid-cols-4 bg-secondary/60 text-xs font-bold uppercase tracking-wider text-primary">
+                <div className="p-4">What's included</div>
+                <div className="p-4 text-center">Starter</div>
+                <div className="p-4 text-center bg-accent/10">Growth</div>
+                <div className="p-4 text-center">Consultant</div>
               </div>
-            );
-          })}
+              {([
+                ["Assessments", "1", "2 (bundle)", "Unlimited"],
+                ["AI executive summary", true, true, true],
+                ["Landscape one-pager PDF", true, true, true],
+                ["Full multi-page report", false, true, true],
+                ["White-label & branding", false, false, true],
+                ["Client workspace / seats", false, false, true],
+                ["Priority support", false, true, "Dedicated CSM"],
+              ] as (string | boolean)[][]).map((row) => {
+                const cell = (v: string | boolean) =>
+                  v === true ? <Check className="h-4 w-4 text-success inline" /> :
+                  v === false ? <span className="text-muted-foreground/50">—</span> :
+                  v;
+                return (
+                  <div key={String(row[0])} className="grid grid-cols-4 text-sm border-t border-border">
+                    <div className="p-4 font-semibold text-primary">{row[0]}</div>
+                    <div className="p-4 text-center text-muted-foreground">{cell(row[1])}</div>
+                    <div className="p-4 text-center bg-accent/5 text-primary font-semibold">{cell(row[2])}</div>
+                    <div className="p-4 text-center text-muted-foreground">{cell(row[3])}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* FAQ mini */}
