@@ -28,31 +28,22 @@ export async function exportPagesToPdf(
 
   const imgData = canvas.toDataURL("image/jpeg", 0.95);
   
-  const pdf = new jsPDF({ orientation, unit: "mm", format: "a4" });
-  const pdfWidth = pdf.internal.pageSize.getWidth();
-  const pdfHeight = pdf.internal.pageSize.getHeight();
-  
-  const margin = 10; // mm breathing space
+  const pdfWidth = orientation === "portrait" ? 210 : 297; // Standard A4 width in mm
+  const margin = 10;
   const innerWidth = pdfWidth - margin * 2;
-  const innerHeight = pdfHeight - margin * 2;
   
   const imgWidth = innerWidth;
   const imgHeight = (canvas.height * innerWidth) / canvas.width;
   
-  let heightLeft = imgHeight;
-  let position = 0; // The top of the image relative to the current PDF page
-  
-  // First page
-  pdf.addImage(imgData, "JPEG", margin, margin, imgWidth, imgHeight, undefined, "FAST");
-  heightLeft -= innerHeight;
-  
-  // Add subsequent pages if the image is taller than one page
-  while (heightLeft > 0) {
-    position = heightLeft - imgHeight;
-    pdf.addPage();
-    pdf.addImage(imgData, "JPEG", margin, position + margin, imgWidth, imgHeight, undefined, "FAST");
-    heightLeft -= innerHeight;
-  }
+  const pdfHeight = imgHeight + margin * 2;
 
+  // Create a single continuous PDF page
+  const pdf = new jsPDF({ 
+    orientation, 
+    unit: "mm", 
+    format: [pdfWidth, pdfHeight]
+  });
+  
+  pdf.addImage(imgData, "JPEG", margin, margin, imgWidth, imgHeight, undefined, "FAST");
   pdf.save(fileName.endsWith(".pdf") ? fileName : `${fileName}.pdf`);
 }
